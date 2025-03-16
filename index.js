@@ -229,7 +229,11 @@ async function processWallets() {
     console.log(chalk.blue(`Loaded ${privateKeys.length} wallets from the private_keys.txt file.`));
 
     for (let privateKey of privateKeys) {
-        await executeTradeWithRetry(privateKey); // 5 attempts per wallet
+        // Execute the trade 5 times for each wallet
+        for (let i = 0; i < 5; i++) {
+            console.log(chalk.blue(`\n🔄 Starting iteration ${i + 1} for wallet: ${privateKey}`));
+            await executeTradeWithRetry(privateKey); // 5 attempts per wallet
+        }
     }
 
     console.log(chalk.green('✅ All wallets processed, waiting 24 hours...'));
