@@ -5,18 +5,20 @@ const chalk = require('chalk');
 // Initialize Web3 first
 const web3 = new Web3(new Web3.providers.HttpProvider('https://evmrpc-testnet.0g.ai'));
 
+//0G-Galileo-Testnet-Updated
+
 // Token configuration
 const TOKENS = [
     { 
-        address: '0x9A87C2412d500343c073E5Ae5394E3bE3874F76b',
+        address: '0xA8F030218d7c26869CADd46C5F10129E635cD565',
         symbol: 'USDT'
     },
     {
-        address: '0xce830d0905e0f7a9b300401729761579c5fb6bd6',
+        address: '0x2619090fcfDB99a8CCF51c76C9467F7375040eeb',
         symbol: 'ETH'
     },
     {
-        address: '0x1E0D871472973c562650E991ED8006549F8CBEfc',
+        address: '0x6dc29491a8396Bd52376b4f6dA1f3E889C16cA85',
         symbol: 'BTC'
     }
 ];
@@ -122,7 +124,7 @@ async function approveUnlimited(privateKey, tokenAddress) {
         gas: gasEstimate,
         gasPrice: await web3.eth.getGasPrice(),
         nonce: await web3.eth.getTransactionCount(walletAddress, 'pending'),
-        chainId: 16600
+        chainId: 80087
     };
 
     const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
@@ -207,7 +209,7 @@ async function executeTrade(privateKey) {
             gas: gasEstimate,
             gasPrice: await web3.eth.getGasPrice(),
             nonce: await web3.eth.getTransactionCount(walletAddress, 'pending'),
-            chainId: 16600
+            chainId: 80087
         };
 
         const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
